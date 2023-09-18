@@ -12,6 +12,7 @@ export interface BlogPost {
   contentTypeId: "blogPost"
   fields: {
     title: EntryFieldTypes.Text
+    slug: EntryFieldTypes.Text
     author: Author
     content: EntryFieldTypes.RichText
     featuredImage: EntryFieldTypes.AssetLink
@@ -45,7 +46,8 @@ export const getPosts = async () => {
       createdAt: item?.sys.createdAt,
       fields: {
         title: item.fields.title,
-        content: item.fields.content.content,
+        slug: item.fields.slug,
+        content: item.fields.content,
         author: item.fields?.author?.fields?.name,
         image: item.fields.featuredImage
       }
@@ -53,4 +55,18 @@ export const getPosts = async () => {
   })
 
   return posts
+}
+
+export const getSlugs = async () => {
+  const res = await contentfulClient.getEntries<BlogPost>({
+    content_type: "blogPost"
+  })
+
+  const slugs = res.items.map((item) => {
+    return {
+      slug: item.fields.slug
+    }
+  })
+
+  return slugs
 }

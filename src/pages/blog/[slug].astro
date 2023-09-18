@@ -1,0 +1,25 @@
+---
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
+import { getPosts } from "../../lib/contentful"
+import Layout from "@layouts/Layout.astro"
+
+export async function getStaticPaths() {
+  const posts = await getPosts()
+
+  const pages = posts.map((post) => ({
+    params: { slug: post.fields.slug },
+    props: {
+      ...post.fields
+    }
+  }))
+
+  return pages
+}
+
+const { title, slug, author, content, featuredImage } = Astro.props
+---
+
+<Layout title={title}>
+  <h1>{title}</h1>
+  <article set:html={documentToHtmlString(content)} />
+</Layout>

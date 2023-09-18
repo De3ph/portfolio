@@ -1,0 +1,29 @@
+---
+import Layout from "@layouts/Layout.astro"
+import { getPosts } from "../../lib/contentful"
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
+
+const posts = await getPosts()
+---
+
+<Layout title="De3ph's Blog">
+  <div transition:animate="slide">
+    <p class="text-2xl mb-2">Blog</p>
+    <hr class="mb-2" />
+  </div>
+
+  {
+    posts.map((post) => {
+      return (
+        <div class="bg-neutral-800 px-2 py-6">
+          <h1 class="text-2xl">{post?.fields.title}</h1>
+          <br />
+          <article
+            class="bg-neutral-900"
+            set:html={documentToHtmlString(post.fields.content)}
+          />
+        </div>
+      )
+    })
+  }
+</Layout>
