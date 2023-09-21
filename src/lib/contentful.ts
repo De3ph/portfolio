@@ -48,8 +48,11 @@ export const getPosts = async () => {
         title: item.fields.title,
         slug: item.fields.slug,
         content: item.fields.content,
-        author: item.fields?.author?.fields?.name,
-        image: item.fields.featuredImage
+        author: item.fields?.author?.["fields"]?.["name"],
+        image: {
+          url: item.fields.featuredImage?.fields?.file?.url,
+          alt: item.fields.featuredImage?.fields?.file?.fileName
+        }
       }
     }
   })
