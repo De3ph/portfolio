@@ -1,0 +1,35 @@
+---
+import { getPosts } from "../../lib/contentful"
+import Layout from "@layouts/Layout.astro"
+import Grid from "@layouts/Grid.astro"
+import Card from "../../components/Card"
+
+const posts = await getPosts()
+---
+
+<Layout title="De3ph's Blog">
+  <div class="mb-8" transition:animate='slide'>
+    <p class='text-2xl mb-2'>Blog</p>
+    <hr class='mb-2' />
+  </div>
+
+  <Grid>
+    {
+      posts?.map((post) => {
+        return (
+          <Card
+          transition:animate="initial"
+          transition:persist="true"
+            title={post.fields.title}
+            slug={post.fields.slug}
+            author={post.fields.author}
+            content={post.fields.content}
+            image={post.fields.image}
+            createdAt={post.createdAt}
+          />
+          
+        )
+      })
+    }
+  </Grid>
+</Layout>

@@ -1,22 +1,32 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+import Header from '../components/Header';
+
 interface Props {
-	title?: string;
+  title?: string
 }
 
-const { title = "De3ph" } = Astro.props;
+const { title = "De3ph" } = Astro.props
+const links = [
+  { href: '/', title: 'Home' },
+  { href: '/projects', title: 'Projects' },
+  { href: '/blog', title: 'Blog' },
+]
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="min-h-screen bg-neutral-950 text-slate-200 px-10 md:px-24 xl:px-48">
+    <Header links={links} />
+    <slot />
+  </body>
 </html>
