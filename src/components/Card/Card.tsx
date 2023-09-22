@@ -15,7 +15,7 @@ const Card = (props: Props) => {
 
   return (
     <a href={href}>
-      <div className='flex flex-col shadow-lg shadow-fuchsia-950 group hover:scale-105 transition-transform duration-500'>
+      <div className='flex flex-col p-2 rounded-md border-l border-b border-slate-700 shadow-md shadow-slate-900 hover:shadow-slate-800 hover:shadow-lg group hover:scale-105 transition-all ease-out duration-300'>
         <div className='h-28'>
           <img
             src={props.image.url}

@@ -2,15 +2,15 @@
 import { getPosts } from "../../lib/contentful"
 import Layout from "@layouts/Layout.astro"
 import Grid from "@layouts/Grid.astro"
-import Card from "../../components/Card"
+import Card from "@components/Card"
 
 const posts = await getPosts()
 ---
 
 <Layout title="De3ph's Blog">
-  <div class="mb-8" transition:animate='slide'>
-    <p class='text-2xl mb-2'>Blog</p>
-    <hr class='mb-2' />
+  <div class="mb-8">
+    <p class='text-2xl mb-3'>Blog</p>
+    <hr class='mb-2 border-neutral-600' />
   </div>
 
   <Grid>
