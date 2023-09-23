@@ -23,14 +23,20 @@ const links = [
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap'
+      rel='stylesheet'
+    />
     <title>{title}</title>
     <ViewTransitions />
   </head>
   <body
-    class='min-h-screen flex flex-col bg-neutral-950 text-neutral-200 px-10 md:px-24 xl:px-48'
+    class='font-oswald tracking-widest min-h-screen flex flex-col bg-neutral-950 text-neutral-200 px-10 md:px-24 xl:px-48'
   >
     <Header links={links} />
-    <section class="grow py-5">
+    <section class='grow py-5'>
       <slot />
     </section>
     <Footer />
