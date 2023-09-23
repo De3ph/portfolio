@@ -1,5 +1,3 @@
-import Hero from "./Hero.tsx"
-import HeroTitle from "./HeroTitle.tsx"
+import Hero from "./Hero"
 
 export default Hero
-export { HeroTitle }

@@ -1,14 +1,16 @@
-import Lottie from "lottie-react"
+import { useLottie } from "lottie-react"
 import computerAnimation from "../../assets/lottie/computerAnimation.json"
+import type { JsxElement } from "typescript"
 
-type Props = {}
+const HeroAnimation = () => {
+  const options = {
+    animationData: computerAnimation,
+    loop: true,
+    autoplay: true
+  }
 
-const HeroAnimation = (props: Props) => {
-  return (
-    <>
-      <Lottie animationData={computerAnimation} />
-    </>
-  )
+  const { View } = useLottie(options)
+  return <>{View}</>
 }
 
 export default HeroAnimation

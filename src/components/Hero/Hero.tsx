@@ -1,9 +1,7 @@
-import HeroAnimation from "./HeroAnimation"
+import HeroAnimation from "./HeroAnimation.tsx"
 import HeroTitle from "./HeroTitle"
 
-type Props = {}
-
-const Hero = (props: Props) => {
+const Hero = () => {
   const title = "Hi, my name is Hamit Can"
   return (
     <main className='space-y-14'>
