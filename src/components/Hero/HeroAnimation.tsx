@@ -3,13 +3,16 @@ import computerAnimation from "../../assets/lottie/computerAnimation.json"
 import type { JsxElement } from "typescript"
 
 const HeroAnimation = () => {
+
+  const style = {}
+
   const options = {
     animationData: computerAnimation,
     loop: true,
     autoplay: true
   }
 
-  const { View } = useLottie(options)
+  const { View } = useLottie(options, style)
   return <>{View}</>
 }
 
