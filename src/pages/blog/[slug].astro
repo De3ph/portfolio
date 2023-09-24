@@ -20,9 +20,11 @@ const { title, slug, author, content, image } = Astro.props
 ---
 
 <Layout title={title}>
-  <h1>{title}</h1>
-  <article set:html={documentToHtmlString(content)} />
-  <div class="bg-white">
-    <img src={image?.url} alt={image?.fileName} />
-  </div>
+  <article>
+    <div class="w-72 h-72">
+      <img src={image?.url} alt={image?.fileName} />
+    </div>
+    <h1>{title}</h1>
+    <article set:html={documentToHtmlString(content)} />
+  </article>
 </Layout>
