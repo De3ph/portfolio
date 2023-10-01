@@ -1,5 +1,56 @@
 ---
+import { twJoin, twMerge } from "tailwind-merge"
 import Layout from "@layouts/Layout.astro"
+
+const listLength = 4
+const pageHeight = "h-[400vh]"
+
+const listItemClass =
+  "m-0 p-0 h-screen w-screen flex items-center justify-center flex-col overflow-hidden"
 ---
 
-<Layout title="Projects Showcase">Projects</Layout>
+<Layout title='Projects Showcase'>
+  <section
+    id='wrapper'
+    class={twMerge(
+      `${pageHeight}`,
+      "relative scroll-smooth snap-both snap-start scrollbar-hide mx-auto",
+    )}
+  >
+    <ul class='m-0 p-0 flex sticky top-0 justify-center items-center'>
+      <li class={listItemClass}>
+        <div>Project soon</div>
+      </li>
+      <li class={listItemClass}>
+        <div>Project soon</div>
+      </li>
+      <li class={listItemClass}>
+        <div>Project soon</div>
+      </li>
+      <li class={listItemClass}>
+        <div>Project soon</div>
+      </li>
+    </ul>
+  </section>
+  <script>
+    import { scroll, animate } from "motion"
+    const items = document.querySelectorAll("li")
+    scroll(
+      animate("ul", {
+        transform: ["none", `translateX(-${items.length - 1}00vw)`]
+      }),
+      { target: document.querySelector("section") }
+    )
+  </script>
+</Layout>
+
+<style>
+  #wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  #wrapper {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+</style>

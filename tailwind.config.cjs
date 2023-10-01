@@ -4,9 +4,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        oswald: ["Oswald", "sans-serif"]
+        oswald: ["Oswald", "sans-serif"],
+        oregano: ["Oregano", "cursive"]
       }
     }
   },
-  plugins: []
+  plugins: ["tailwind-scrollbar-hide"]
 }
