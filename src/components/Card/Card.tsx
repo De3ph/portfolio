@@ -14,7 +14,7 @@ const Card = (props: Props) => {
   const href = `/blog/${props.slug}`
 
   return (
-    <a href={href}>
+    <a href={href} id='blog-card'>
       <div className='flex flex-col p-2 rounded-md border-l border-b border-slate-700 shadow-md shadow-slate-900 hover:shadow-slate-800 hover:shadow-lg group hover:scale-105 transition-all ease-out duration-300'>
         <div className='h-28'>
           <img
