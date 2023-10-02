@@ -22,10 +22,15 @@ const links = content.header.links
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com/' />
+    <link rel='preconnect' href='https://fonts.gstatic.com/' crossorigin />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
       href='https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap'
       rel='stylesheet'
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
     <title>{title}</title>
     <ViewTransitions />
@@ -35,7 +40,7 @@ const links = content.header.links
   >
     <Header links={links} />
     <section class='grow grid py-5'>
-        <slot />
+      <slot />
     </section>
     <Footer />
   </body>
