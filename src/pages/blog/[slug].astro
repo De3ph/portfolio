@@ -20,11 +20,20 @@ const { title, slug, author, content, image } = Astro.props
 ---
 
 <Layout title={title}>
-  <article>
-    <div class="w-72 h-72">
-      <img src={image?.url} alt={image?.fileName} />
+  <article class='space-y-12'>
+    <div>
+      <a href="/blog">
+        <button class='py-1 px-3 rounded-md text-lg font-semibold hover:bg-neutral-800 hover:text-white transition-colors '
+        >&lt; Back
+      </button>
+      </a>
     </div>
-    <h1>{title}</h1>
-    <article set:html={documentToHtmlString(content)} />
+    <section>
+      <div class='w-72 h-72'>
+        <img src={image?.url} alt={image?.fileName} />
+      </div>
+      <h1>{title}</h1>
+      <article set:html={documentToHtmlString(content)} />
+    </section>
   </article>
 </Layout>
