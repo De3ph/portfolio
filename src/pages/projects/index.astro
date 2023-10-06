@@ -1,35 +1,31 @@
 ---
 import Layout from "@layouts/Layout.astro"
+import { getProjects } from "../../lib/contentful"
 
-const listItemClass = "swiper-slide"
+import Grid from "@layouts/Grid.astro"
+import Card from "@components/Card"
+import Caption from "@components/Caption"
+
+const projects = await getProjects()
 ---
 
 <Layout title='Projects Showcase'>
-  <!-- <section class='swiper'>
-    <div class='swiper-wrapper'>
-      <div class={listItemClass}>
-        <div>Project 1</div>
-      </div>
-      <div class={listItemClass}>
-        <div>Project 2</div>
-      </div>
-      <div class={listItemClass}>
-        <div>Project soon</div>
-      </div>
-      <div class={listItemClass}>
-        <div>Project soon</div>
-      </div>
-    </div>
-    <script>
-      import Swiper from "swiper"
-      import "swiper/css"
-
-      const swipper = new Swiper(".swiper", {
-        direction: "vertical"
-      })
-    </script>
-  </section> -->
-  <section class="grid place-items-center">
-    Soon 👋
+  <section>
+   <Caption text="Projects" />
+    <Grid>
+      {
+        projects.map((project) => {
+          return (
+            <Card
+              type='project'
+              title={project.title}
+              image={project.image}
+              tags={project.tags}
+              href={project.link}
+            />
+          )
+        })
+      }
+    </Grid>
   </section>
 </Layout>

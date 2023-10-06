@@ -1,0 +1,26 @@
+---
+const { text } = Astro.props
+---
+
+<div class='mb-8'>
+  <p
+    id='caption'
+    class='text-2xl mb-3 underline decoration-indigo-400 underline-offset-8 decoration-2 decoration-wavy'
+  >
+    {text}
+  </p>
+</div>
+<script>
+  import { animate } from "motion"
+  animate(
+    "#caption",
+    {
+      y: [-10, 0]
+    },
+    {
+      easing: "ease-in-out",
+      duration: 0.8,
+      persist: false
+    }
+  )
+</script>
