@@ -1,12 +1,19 @@
 ---
 import {Github, Linkedin} from "../../components/Icons/"
+import image from "../../assets/img/bmc-button.png"
 import content from "@content";
 ---
 
-<div class='flex justify-around py-3'>
+<div class='flex justify-around items-center py-3'>
   <div>{content.footer.fullName}</div>
-  <div class='flex gap-x-3'>
+  <div class='flex gap-x-3 items-center'>
     <Github />
     <Linkedin />
+    <a target="_blank" href="https://www.buymeacoffee.com/hamitcand">
+      <button>
+        <img src={image.src} width="150" />
+      </button>
+    </a>
   </div>
 </div>
+
