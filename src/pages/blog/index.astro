@@ -14,13 +14,13 @@ const posts = await getPosts()
       <hr class='mb-2 border-neutral-600' />
     </div>
   
-    <Grid>
+    <Grid
+    transition:animate="initial"
+    >
       {
         posts?.map((post) => {
           return (
             <Card
-            transition:animate="initial"
-            transition:persist="true"
               title={post.fields.title}
               slug={post.fields.slug}
               author={post.fields.author}
