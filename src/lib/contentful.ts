@@ -19,6 +19,17 @@ export interface BlogPost {
   }
 }
 
+export interface Project {
+  id: string
+  title: string
+  link: string
+  image: {
+    url: string
+    alt: string
+  }
+  tags: Array<string>
+}
+
 export const contentfulClient = contentful.createClient({
   space: import.meta.env.CONTENTFUL_SPACE_ID,
   accessToken: import.meta.env.DEV
@@ -72,4 +83,23 @@ export const getSlugs = async () => {
   })
 
   return slugs
+}
+
+export const getProjects = async () => {
+  const projects = await contentfulClient.getEntries({
+    content_type: "projects"
+  })
+
+  const res = projects.items.map((element) => {
+    return {
+      ...element.fields,
+      image: {
+        url: element.fields.image?.fields?.file?.url,
+        alt: element.fields.image?.fields?.file?.fileName
+      },
+      tags: element.metadata.tags.map((e) => e.sys.id)
+    } as Project
+  })
+
+  return res
 }
