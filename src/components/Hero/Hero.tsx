@@ -6,28 +6,6 @@ import HeroTitle from "./HeroTitle"
 import content from "@content"
 
 const Hero = () => {
-  // useLayoutEffect(() => {
-  //   const heroDesc = document.getElementById("heroDesc")
-  //   if (heroDesc) {
-  //     animate(
-  //       heroDesc,
-  //       {
-  //         opacity: [0.2, 0.8, 1],
-  //         scale: [0.8, 1]
-  //       },
-  //       {
-  //         easing: spring({
-  //           mass: 1.4,
-  //           from: 1.2,
-  //           velocity: 0.1,
-  //           stiffness: 80
-  //         }),
-  //         duration: 3
-  //       }
-  //     )
-  //   }
-  // }, [])
-
   useEffect(() => {
     const heroDesc = document.getElementById("heroDesc")
     if (heroDesc) {
