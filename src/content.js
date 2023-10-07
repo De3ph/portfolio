@@ -9,9 +9,11 @@ const content = {
   firstPage: {
     documentTitle: "Welcome!",
     hero: {
-      title: "Hi, my name is Hamit Can",
+      title: "Hi, I'm Hamit 👋",
+      subtitle: "Passionate Software Engineer",
+      subtitles: ["Passionate Software Engineer", "Gym Rat"],
 
-      text: "I'm mostly interested in web development, curious and eager to code. I do not hesitate to learn new technologies, encourage colleagues to become better together is pleasure to me."
+      text: "Love to build things, especially with web technologies. Keen to work with new tools & techs. \n\n Wanna' be retired at 40, living in Europe || Canada"
     }
   },
   footer: {
