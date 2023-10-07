@@ -16,12 +16,18 @@ type Props = {
 const Card = (props: Props) => {
   return (
     <a href={props?.href} id='blog-card'>
-      <div className='flex flex-col p-2 rounded-md border-b border-indigo-800 shadow-sm shadow-indigo-800 hover:shadow-indigo-800 hover:shadow-md group hover:scale-105 transition-all ease-out duration-300'>
+      <div
+        className='flex flex-col p-2 rounded-md lg:rounded-lg 
+      border-indigo-400 lg:border-indigo-200 lg:hover:border-indigo-400 
+      group lg:hover:scale-105 
+      transition-all ease-out duration-300 
+      border-dashed border-spacing-2 lg:border-spacing-4 border-4 border-collapse lg:border-opacity-10 lg:hover:border-opacity-100'
+      >
         <div className='h-28'>
           <img
             src={props?.image?.url}
             alt={props?.image?.alt}
-            className='h-full w-full object-cover group-hover:opacity-60 transition-opacity duration-500'
+            className='h-full w-full object-cover lg:group-hover:opacity-60 transition-opacity duration-500'
           />
         </div>
         <div className='p-3'>
