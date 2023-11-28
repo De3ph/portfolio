@@ -17,13 +17,14 @@ const Card = (props: Props) => {
   return (
     <a href={props?.href} id='blog-card'>
       <div
-        className='flex flex-col p-2 rounded-md lg:rounded-lg 
-      border-indigo-400 lg:border-indigo-200 lg:hover:border-indigo-400 
+        className='
+        overflow-hidden
+        flex flex-col rounded-md lg:rounded-lg
       group lg:hover:scale-105 
       transition-all ease-out duration-300 
-      border-dashed border-spacing-2 lg:border-spacing-4 border-4 border-collapse lg:border-opacity-10 lg:hover:border-opacity-100'
+       border-[1px] border-stone-700 border-collapse lg:border-opacity-10 lg:hover:border-opacity-100'
       >
-        <div className='h-28'>
+        <div className='h-[7rem]'>
           <img
             src={props?.image?.url}
             alt={props?.image?.alt}
