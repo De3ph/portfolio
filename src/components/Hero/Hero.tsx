@@ -1,6 +1,3 @@
-import { useEffect, useLayoutEffect } from "react"
-import { animate, spring } from "motion"
-
 import HeroAnimation from "./HeroAnimation.tsx"
 import HeroTitle from "./HeroTitle"
 import content from "@content"
