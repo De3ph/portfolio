@@ -6,32 +6,8 @@ import HeroTitle from "./HeroTitle"
 import content from "@content"
 
 const Hero = () => {
-  useEffect(() => {
-    const heroDesc = document.getElementById("heroDesc")
-    if (heroDesc) {
-      animate(
-        heroDesc,
-        {
-          opacity: [0.2, 0.8, 1],
-          scale: [0.8, 1]
-        },
-        {
-          easing: spring({
-            mass: 1.4,
-            from: 1.2,
-            velocity: 0.1,
-            stiffness: 80
-          }),
-          duration: 3
-        }
-      )
-    }
-  })
   return (
-    <main
-      id='heroDesc'
-      className='space-y-16 md:space-y-0 place-self-center opacity-0'
-    >
+    <main id='heroDesc' className='space-y-16 md:space-y-0 place-self-center'>
       <HeroTitle
         title={content.firstPage.hero.title}
         subtitles={content.firstPage.hero.subtitles}
