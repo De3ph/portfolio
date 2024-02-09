@@ -8,7 +8,7 @@ const HeaderItem = (props: Props) => {
   return (
     <a
       href={props.link.href}
-      className='text-lg md:text-2xl transition-colors duration-200  bg-clip-text bg-gradient-to-r from-stone-500 to-gray-200 hover:text-transparent '
+      className='text-lg md:text-2xl transition-colors duration-200  bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-300 lg:hover:text-transparent hover:auto'
     >
       {props.link.title}
     </a>
