@@ -1,4 +1,5 @@
 ---
+import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 import { getPosts } from "../../lib/contentful"
 import Layout from "@layouts/Layout.astro"
@@ -15,6 +16,13 @@ export async function getStaticPaths() {
 
   return pages
 }
+
+const options = {
+    renderNode: {
+        [BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields }}}) =>
+            `<img src="${fields.file.url}" height="${fields.file.details.image.height}" width="${fields.file.details.image.width}" alt="${fields.description}"/>`,
+    },
+};
 
 const { title, content, image } = Astro.props
 ---
@@ -33,7 +41,7 @@ const { title, content, image } = Astro.props
         <img src={image?.url} alt={image?.fileName} />
       </div>
       <h1>{title}</h1>
-      <article set:html={documentToHtmlString(content)} />
+      <article set:html={documentToHtmlString(content,options)} />
     </section>
   </article>
 </Layout>

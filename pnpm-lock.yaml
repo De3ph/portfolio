@@ -17,6 +17,9 @@ dependencies:
   '@contentful/rich-text-html-renderer':
     specifier: ^16.1.2
     version: 16.1.2
+  '@contentful/rich-text-types':
+    specifier: ^16.3.4
+    version: 16.3.4
   '@types/react':
     specifier: ^18.0.21
     version: 18.2.21
@@ -462,12 +465,12 @@ packages:
     resolution: {integrity: sha512-3sYwWHdo8LetwTV8zecV7dUqp9XGLAKR5QYlP0okq2eFC815BPk5/aGhnPbvzsgAu3dRyPHvwK+wMgTwJxOpxg==}
     engines: {node: '>=6.0.0'}
     dependencies:
-      '@contentful/rich-text-types': 16.3.0
+      '@contentful/rich-text-types': 16.3.4
       escape-html: 1.0.3
     dev: false
 
-  /@contentful/rich-text-types@16.3.0:
-    resolution: {integrity: sha512-OfQmAu5bxE0CgQA3WlUleVej+ifFG/iXmB2DmUl4EyWyFue1aiIvfjxQhcDRSH4n1jUNMJ6L1wInZL8uV5m3TQ==}
+  /@contentful/rich-text-types@16.3.4:
+    resolution: {integrity: sha512-PyVSrQa5j1hO4grgA0Ivo/taiOvW0uFN79JB5JkTG8U7DnWGI7Ap2As6zN6/E6YvDqb7w2cYRMSGSQ3qfxu8HQ==}
     engines: {node: '>=6.0.0'}
     dev: false
 
@@ -1662,7 +1665,7 @@ packages:
     resolution: {integrity: sha512-vt0a/n1oIdNWfefmupC+B3bAjK12SGAf03motat2IWxH1md36PCI5Do5SH1t2VmTrOSDLiJIpXrkYBGKXn1GQA==}
     engines: {node: '>=12'}
     dependencies:
-      '@contentful/rich-text-types': 16.3.0
+      '@contentful/rich-text-types': 16.3.4
       axios: 1.5.0
       contentful-resolve-response: 1.8.1
       contentful-sdk-core: 8.1.0
