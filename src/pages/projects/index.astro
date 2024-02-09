@@ -11,12 +11,13 @@ const projects = await getProjects()
 
 <Layout title='Projects Showcase'>
   <section>
-   <Caption text="Projects" />
+    <Caption text='Projects' />
     <Grid>
       {
         projects.map((project) => {
           return (
             <Card
+              client:idle
               type='project'
               title={project.title}
               image={project.image}
