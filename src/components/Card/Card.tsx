@@ -1,3 +1,7 @@
+import { Autoplay } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css/bundle"
+
 type Props = {
   type: "blog" | "project"
   title?: string
@@ -18,7 +22,6 @@ const Card = (props: Props) => {
     <a href={props?.href} id='blog-card'>
       <div
         className='
-        overflow-hidden
         flex flex-col rounded-md lg:rounded-lg
       group lg:hover:scale-105 
       transition-all ease-out duration-300 
@@ -35,19 +38,31 @@ const Card = (props: Props) => {
           <div className='py-2'>
             <h1 className='text-xl md:text-2xl'>{props?.title}</h1>
           </div>
-          <div>
-            <p className='text-neutral-300 text-right'>{props?.author}</p>
-          </div>
         </div>
-        {props?.type === "project" && (
-          <div className='duration-200 flex justify-center gap-x-4'>
-            {props?.tags?.map((tag) => (
-              <span className='text-neutral-300 text-sm bg-neutral-900 px-2 py-1 rounded-xl'>
+      </div>
+      <div>
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={10}
+          slidesPerView={1}
+          autoplay={{
+            delay: 2000,
+            waitForTransition: false,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true
+          }}
+          enabled
+        >
+          {props?.type === "project" &&
+            props?.tags?.map((tag) => (
+              <SwiperSlide
+                className='text-neutral-300 text-sm py-1 text-center rounded-xl'
+                key={tag}
+              >
                 {tag}
-              </span>
+              </SwiperSlide>
             ))}
-          </div>
-        )}
+        </Swiper>
       </div>
     </a>
   )

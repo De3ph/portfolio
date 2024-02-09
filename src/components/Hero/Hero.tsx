@@ -10,7 +10,7 @@ const Hero = () => {
     >
       <HeroTitle
         title={content.firstPage.hero.title}
-        subtitles={content.firstPage.hero.subtitles}
+        subtitle={content.firstPage.hero.subtitle}
       />
 
       <section className='grid grid-cols-1 place-items-center gap-y-8 md:gap-y-0 gap-x-0 md:gap-x-20 lg:gap-x-0 md:grid-cols-2'>

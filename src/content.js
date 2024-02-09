@@ -10,8 +10,7 @@ const content = {
     documentTitle: "Welcome!",
     hero: {
       title: "Hi, I'm Hamit 👋",
-      subtitles: ["Passionate Software Engineer", "Gym Rat"],
-
+      subtitle: "Passionate Software Engineer",
       text: "Love to build things, especially with web technologies. Keen to work with new tools & techs. \n\n Wanna' be retired at 40, living in Europe || Canada"
     }
   },
