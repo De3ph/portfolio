@@ -5,7 +5,7 @@ type Props = {
 
 const HeroTitle = (props: Props) => {
   return (
-    <div className='font-semibold text-3xl bg-gradient-to-r bg-clip-text text-indigo-300'>
+    <div className='font-semibold text-2xl bg-gradient-to-r bg-clip-text text-indigo-300'>
       <p>{props.title}</p>
       <p>{props.subtitle}</p>
     </div>

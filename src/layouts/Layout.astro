@@ -20,20 +20,18 @@ const links = content.header.links
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
+
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com/' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
-    <link
-      href='https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap'
-      rel='stylesheet'
-      crossorigin
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,371&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
     <title>{title}</title>
     <ViewTransitions />
   </head>
   <body
     class='max-w-screen-2xl mx-auto
-    font-oswald tracking-widest min-h-screen flex flex-col
+    font-system -tracking-wide leading-snug min-h-screen flex flex-col
     bg-neutral-900 text-neutral-200 px-10 md:px-36'
   >
     <Header links={links} />

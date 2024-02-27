@@ -13,11 +13,15 @@ const Hero = () => {
         subtitle={content.firstPage.hero.subtitle}
       />
 
-      <section className='grid grid-cols-1 place-items-center gap-y-8 md:gap-y-0 gap-x-0 md:gap-x-20 lg:gap-x-0 md:grid-cols-2'>
-        <p className='font-normal text-lg leading-loose first-letter:text-2xl first-letter:font-semibold whitespace-pre-line'>
+      <section
+        className='grid grid-cols-1 place-items-center 
+       md:grid-cols-2 md:gap-y-0 gap-x-0 md:gap-x-20 
+      lg:gap-x-0'
+      >
+        <div className='font-normal text-base leading-loose'>
           {content.firstPage.hero.text}
-        </p>
-        <div className='max-w-full w-96 h-96'>
+        </div>
+        <div className='max-w-full w-72 h-72'>
           <HeroAnimation />
         </div>
       </section>

@@ -7,7 +7,7 @@ type Props = {
 const Header = ({ links }: Props) => {
   return (
     <>
-      <div className='flex justify-center gap-8 md:gap-14 py-10'>
+      <div className='flex justify-center gap-8 md:gap-12 py-10'>
         {links.map((link, index) => {
           return <HeaderItem key={index} link={link} />
         })}
