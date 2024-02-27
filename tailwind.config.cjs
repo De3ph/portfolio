@@ -4,8 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        oswald: ["Oswald", "sans-serif"],
-        oregano: ["Oregano", "cursive"]
+        system: ["Open Sans", "system-ui"]
       }
     }
   },
