@@ -1,4 +1,4 @@
-import HeaderItem from "./HeaderItem"
+import HeaderItem from "./item"
 
 type Props = {
   links: NavLink[]

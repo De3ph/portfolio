@@ -2,7 +2,6 @@ import { useLottie } from "lottie-react"
 import computerAnimation from "../../assets/lottie/computerAnimation.json"
 
 const HeroAnimation = () => {
-
   const style = {}
 
   const options = {

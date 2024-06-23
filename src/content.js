@@ -3,7 +3,8 @@ const content = {
     links: [
       { href: "/", title: "Home" },
       { href: "/projects", title: "Projects" },
-      { href: "/blog", title: "Blog" }
+      { href: "/blog", title: "Blog" },
+      { href: "/workExperince", title: "Work Experince" }
     ]
   },
   firstPage: {

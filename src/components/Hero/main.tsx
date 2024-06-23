@@ -1,5 +1,5 @@
-import HeroAnimation from "./HeroAnimation.tsx"
-import HeroTitle from "./HeroTitle"
+import HeroAnimation from "./animation.tsx"
+import HeroTitle from "./title.tsx"
 import content from "@content"
 
 const Hero = () => {

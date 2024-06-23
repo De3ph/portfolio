@@ -1,3 +1,3 @@
-import Card from "./Card.tsx"
+import Card from "./base.tsx"
 
 export default Card
