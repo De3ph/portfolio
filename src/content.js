@@ -11,7 +11,7 @@ const content = {
     hero: {
       title: "Hi, I'm Hamit 👋",
       subtitle: "Passionate Software Engineer",
-      text: "Love to build things, especially with web technologies. Keen to work with new tools & techs. \n\n Wanna' be retired at 40, living in Europe || Canada"
+      text: "Love to build things, especially with web technologies. Keen to work with new tools & techs."
     }
   },
   footer: {
