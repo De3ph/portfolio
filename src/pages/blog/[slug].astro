@@ -30,7 +30,7 @@ const options = {
         target: { fields }
       }
     }) =>
-      `<br /> <br /> <img src="${fields.file.url}" height="${fields.file.details.image.height}" width="${fields.file.details.image.width}" alt="${fields.description}"/> <br /> <br />`,
+      `<br /> <img src="${fields.file.url}" height="${fields.file.details.image.height}" width="${fields.file.details.image.width}" alt="${fields.description}"/> <br />`,
     [BLOCKS.PARAGRAPH]: (node: NodeData, next: any) => {
       return `<br /> <p>${next(node.content)}</p>`
     },
