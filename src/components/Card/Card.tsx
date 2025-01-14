@@ -27,7 +27,7 @@ const Card = (props: Props) => {
       transition-all ease-out duration-300 
        border-[1px] border-stone-700 border-collapse lg:border-opacity-10 lg:hover:border-opacity-100'
       >
-        <div className='h-[7rem]'>
+        <div className='h-[7rem] rounded-md'>
           <img
             src={props?.image?.url}
             alt={props?.image?.alt}
