@@ -35,10 +35,10 @@ const options = {
       return `<br /> <p>${next(node.content)}</p>`
     },
     [BLOCKS.HEADING_1]: (node: NodeData, children: Paragraph) => {
-      return `<h1 class="text-2xl">${node.content[0].value}</h1>`
+      return `<h1 class="text-2xl font-bold">${node.content[0].value}</h1>`
     },
     [BLOCKS.HEADING_2]: (node: NodeData, children: Paragraph) => {
-      return `<h1 class="text-lg">${node.content[0].value}</h1>`
+      return `<h1 class="text-lg font-semibold">${node.content[0].value}</h1>`
     },
     [BLOCKS.HR]: (node: NodeData, children: Paragraph) => {
       return `<hr /> <br />`
