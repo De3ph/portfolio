@@ -2,7 +2,7 @@ const content = {
   header: {
     links: [
       { href: "/", title: "Home" },
-      { href: "/projects", title: "Projects" },
+      //{ href: "/projects", title: "Projects" },
       { href: "/blog", title: "Blog" }
     ]
   },
