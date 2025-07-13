@@ -1,6 +1,6 @@
+import content from "@content"
 import HeroAnimation from "./HeroAnimation.tsx"
 import HeroTitle from "./HeroTitle"
-import content from "@content"
 
 const Hero = () => {
   return (
@@ -13,15 +13,11 @@ const Hero = () => {
         subtitle={content.firstPage.hero.subtitle}
       />
 
-      <section
-        className='grid grid-cols-1 place-items-center 
-       md:grid-cols-2 md:gap-y-0 gap-x-0 md:gap-x-20 
-      lg:gap-x-0'
-      >
-        <div className='font-normal text-base leading-loose'>
+      <section className='grid grid-cols-1 md:grid-cols-2 items-center gap-12 md:gap-8 lg:gap-16'>
+        <div className='body-large text-center md:text-left'>
           {content.firstPage.hero.text}
         </div>
-        <div className='max-w-full w-72 h-72'>
+        <div className='w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 justify-self-center'>
           <HeroAnimation />
         </div>
       </section>

@@ -5,10 +5,16 @@ type Props = {
 
 const HeroTitle = (props: Props) => {
   return (
-    <div className='font-semibold text-2xl bg-gradient-to-r bg-clip-text text-indigo-300'>
-      <p>{props.title}</p>
-      <p>{props.subtitle}</p>
-    </div>
+    <header className='text-center space-y-2'>
+      <h1 className='display-large bg-gradient-to-r from-foreground to-primary/80 bg-clip-text text-transparent'>
+        {props.title}
+      </h1>
+      {props.subtitle && (
+        <p className='display-small text-muted-foreground font-normal'>
+          {props.subtitle}
+        </p>
+      )}
+    </header>
   )
 }
 

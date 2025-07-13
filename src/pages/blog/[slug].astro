@@ -4,7 +4,7 @@ import {
   HEADINGS,
   type Paragraph,
   type NodeData,
-TOP_LEVEL_BLOCKS
+  TOP_LEVEL_BLOCKS
 } from "@contentful/rich-text-types"
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 import { getPosts } from "../../lib/contentful"
@@ -30,47 +30,141 @@ const options = {
         target: { fields }
       }
     }) =>
-      `<br /> <img src="${fields.file.url}" height="${fields.file.details.image.height}" width="${fields.file.details.image.width}" alt="${fields.description}"/> <br />`,
+      `<div class="my-8 rounded-lg overflow-hidden">
+        <img 
+          src="${fields.file.url}" 
+          alt="${fields.description || 'Content image'}" 
+          class="w-full h-auto object-cover"
+        />
+      </div>`,
     [BLOCKS.PARAGRAPH]: (node: NodeData, next: any) => {
-      return `<br /> <p>${next(node.content)}</p>`
+      return `<p class="body-text">${next(node.content)}</p>`
     },
     [BLOCKS.HEADING_1]: (node: NodeData, children: Paragraph) => {
-      return `<h1 class="text-2xl font-bold">${node.content[0].value}</h1>`
+      return `<h2 class="h2">${node.content[0].value}</h2>`
     },
     [BLOCKS.HEADING_2]: (node: NodeData, children: Paragraph) => {
-      return `<h1 class="text-lg font-semibold">${node.content[0].value}</h1>`
+      return `<h3 class="h3">${node.content[0].value}</h3>`
+    },
+    [BLOCKS.HEADING_3]: (node: NodeData, children: Paragraph) => {
+      return `<h4 class="h4">${node.content[0].value}</h4>`
     },
     [BLOCKS.HR]: (node: NodeData, children: Paragraph) => {
-      return `<hr /> <br />`
+      return `<hr class="my-8 border-border" />`
     },
     [BLOCKS.LIST_ITEM]: (node: NodeData, next: any) => {
-      return `<li class="">${next(node.content)}</li>`
+      return `<li class="body-text !mb-2">${next(node.content)}</li>`
     },
     [BLOCKS.UL_LIST]: (node: NodeData, next: any) => {
-      return `<ul>${next(node.content)}</ul>`
+      return `<ul class="mb-4 space-y-2 list-disc list-inside ml-6">${next(node.content)}</ul>`
+    },
+    [BLOCKS.OL_LIST]: (node: NodeData, next: any) => {
+      return `<ol class="mb-4 space-y-2 list-decimal list-inside ml-6">${next(node.content)}</ol>`
     }
   }
 }
 
-const { title, content, image } = Astro.props
+const { title, content, image, author, createdAt } = Astro.props
+const publishedDate = createdAt ? new Date(createdAt).toLocaleDateString('en-US', { 
+  year: 'numeric', 
+  month: 'long', 
+  day: 'numeric' 
+}) : null
 ---
 
 <Layout title={title}>
-  <article class='space-y-12 w-full'>
-    <div>
-      <a href='/blog'>
-        <button
-          class='py-1 px-3 rounded-md text-lg font-semibold hover:underline hover:text-white transition-all decoration-indigo-400 underline-offset-8 decoration-2'
-          >&lt; Back
-        </button>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Back Navigation -->
+    <div class="mb-8">
+      <a 
+        href="/blog"
+        class="inline-flex items-center gap-2 body-small hover:text-foreground transition-colors duration-200 group"
+      >
+        <svg 
+          class="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Blog
       </a>
     </div>
-    <section>
-      <div class='w-svw min-h-fit max-h-48 py-4 md:py-16'>
-        <img src={image?.url} alt={image?.fileName} />
+
+    <!-- Article Header -->
+    <header class="mb-12">
+      {image?.url && (
+        <div class="mb-8 aspect-[16/9] overflow-hidden bg-muted">
+          <img 
+            src={image.url} 
+            alt={image.fileName || title}
+            class="w-full h-full object-cover"
+          />
+        </div>
+      )}
+      
+      <div class="space-y-4">
+        <h1 class="display-medium">
+          {title}
+        </h1>
+        
+        {(author || publishedDate) && (
+          <div class="flex items-center gap-4 caption-text">
+            {author && (
+              <span class="font-medium">By {author}</span>
+            )}
+            {publishedDate && (
+              <>
+                {author && <span>•</span>}
+                <time>{publishedDate}</time>
+              </>
+            )}
+          </div>
+        )}
       </div>
-      <h1>{title}</h1>
-      <article lang='en' class='hypens-auto w-full' set:html={documentToHtmlString(content, options)} />
-    </section>
-  </article>
+    </header>
+
+    <!-- Article Content -->
+    <article class="prose prose-neutral dark:prose-invert max-w-none">
+      <div 
+        class="text-foreground leading-7" 
+        set:html={documentToHtmlString(content, options)}
+      />
+    </article>
+  </div>
 </Layout>
+
+<style>
+  /* Custom prose styles for better content rendering */
+  .prose {
+    --tw-prose-body: hsl(var(--muted-foreground));
+    --tw-prose-headings: hsl(var(--foreground));
+    --tw-prose-links: hsl(var(--primary));
+    --tw-prose-bold: hsl(var(--foreground));
+    --tw-prose-code: hsl(var(--foreground));
+    --tw-prose-pre-bg: hsl(var(--muted));
+    --tw-prose-hr: hsl(var(--border));
+    --tw-prose-quotes: hsl(var(--muted-foreground));
+  }
+  
+  .prose blockquote {
+    border-left: 4px solid hsl(var(--border));
+    background: hsl(var(--muted) / 0.5);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+  }
+  
+  .prose code {
+    background: hsl(var(--muted));
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+  }
+  
+  .prose pre {
+    background: hsl(var(--muted)) !important;
+    border: 1px solid hsl(var(--border));
+  }
+</style>

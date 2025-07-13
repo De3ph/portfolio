@@ -1,0 +1,56 @@
+---
+import { getWorkExperiences } from "@/lib/contentful"
+import Caption from "@components/Caption/Caption.astro"
+import { ExperienceTimeline } from "@components/Experience"
+import Layout from "@layouts/Layout.astro"
+
+const experiences = await getWorkExperiences()
+
+// Group experiences by company
+const groupedExperiences = experiences.reduce((acc, exp) => {
+  if (!acc[exp.companyName]) {
+    acc[exp.companyName] = []
+  }
+  acc[exp.companyName].push(exp)
+  return acc
+}, {} as Record<string, typeof experiences>)
+
+// Sort each company's experiences by start date (most recent first)
+Object.keys(groupedExperiences).forEach(company => {
+  groupedExperiences[company].sort((a, b) => 
+    new Date(String(b.startDate)).getTime() - new Date(String(a.startDate)).getTime()
+  )
+})
+---
+
+<Layout title="Experience">
+  <section class="space-y-8">
+    <div class="text-center">
+      <Caption text="Work Experience" />
+      <p class="body-text text-muted-foreground mt-2">
+        My professional journey and key accomplishments
+      </p>
+    </div>
+
+    {
+      experiences && experiences.length > 0 ? (
+        <div class="space-y-0">
+          {Object.entries(groupedExperiences).map(([company, companyExperiences]) => (
+            <ExperienceTimeline 
+              company={company}
+              experiences={companyExperiences}
+              isRemote={companyExperiences.some(exp => exp.role?.toLowerCase().includes('remote'))}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16">
+          <p class="body-text">No work experience available yet.</p>
+          <p class="caption-text">
+            Please add your work history in Contentful.
+          </p>
+        </div>
+      )
+    }
+  </section>
+</Layout> 

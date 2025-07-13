@@ -1,0 +1,68 @@
+---
+import type { WorkExperience } from "@/types";
+import { calculateDuration } from "./utils";
+
+interface Props {
+  company: string;
+  experiences: WorkExperience[];
+  isRemote?: boolean;
+}
+
+const { company, experiences, isRemote = false } = Astro.props;
+
+const totalDuration = () => {
+  if (experiences.length === 0) return "";
+  
+  const earliest = experiences.reduce((min, exp) => 
+    new Date(String(exp.startDate)) < new Date(String(min.startDate)) ? exp : min
+  );
+  
+  const latest = experiences.reduce((max, exp) => {
+    const expEndDate = exp.endDate ? new Date(String(exp.endDate)) : new Date();
+    const maxEndDate = max.endDate ? new Date(String(max.endDate)) : new Date();
+    return expEndDate > maxEndDate ? exp : max;
+  });
+  
+  return calculateDuration(earliest.startDate, latest.endDate);
+};
+
+const companyLogo = experiences[0]?.companyLogo;
+const companyWebsiteUrl = experiences[0]?.companyWebsiteUrl;
+---
+
+<div class="flex items-center justify-between mb-6">
+  <div class="flex items-center gap-4">
+    <!-- Logo placeholder for future use -->
+    <!-- <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-800 p-2 flex items-center justify-center">
+      {companyLogo?.url ? (
+        <img
+          src={companyLogo.url}
+          alt={`${company} logo`}
+          class="w-full h-full object-contain"
+        />
+      ) : (
+        <div class="w-6 h-6 bg-gray-400 rounded"></div>
+      )}
+    </div> -->
+    <div>
+      {companyWebsiteUrl ? (
+        <a href={companyWebsiteUrl} class="hover:text-primary transition-colors">
+          <h2 class="h3 !mt-0 !mb-1">{company}</h2>
+        </a>
+      ) : (
+        <h2 class="h3 !mt-0 !mb-1">{company}</h2>
+      )}
+      {isRemote && (
+        <div class="flex items-center gap-1 text-muted-foreground">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+          </svg>
+          <span class="caption-text">Remote</span>
+        </div>
+      )}
+    </div>
+  </div>
+  <div class="text-right">
+    <p class="body-small font-medium">Total: {totalDuration()}</p>
+  </div>
+</div> 

@@ -2,8 +2,9 @@ const content = {
   header: {
     links: [
       { href: "/", title: "Home" },
-      //{ href: "/projects", title: "Projects" },
-      { href: "/blog", title: "Blog" }
+      { href: "/projects", title: "Projects" },
+      { href: "/blog", title: "Blog" },
+      { href: "/experience", title: "Experience" }
     ]
   },
   firstPage: {
