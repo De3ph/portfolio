@@ -1,0 +1,27 @@
+---
+import type { WorkExperience } from "@/types";
+import CompanyHeader from "./CompanyHeader.astro";
+import RoleCard from "./RoleCard.astro";
+
+interface Props {
+  company: string;
+  experiences: WorkExperience[];
+  isRemote?: boolean;
+}
+
+const { company, experiences, isRemote = false } = Astro.props;
+---
+
+<div class="mb-12 last:mb-0">
+  <CompanyHeader 
+    company={company}
+    experiences={experiences}
+    isRemote={isRemote}
+  />
+
+  <div class="space-y-6 ml-16">
+    {experiences.map((experience) => (
+      <RoleCard experience={experience} />
+    ))}
+  </div>
+</div> 

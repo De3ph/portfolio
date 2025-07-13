@@ -1,34 +1,5 @@
-import contentful, { type EntryFieldTypes } from "contentful"
-
-export interface Author {
-  contentTypeId: "author"
-  fields: {
-    name: EntryFieldTypes.Text
-    avatar: EntryFieldTypes.AssetLink
-  }
-}
-
-export interface BlogPost {
-  contentTypeId: "blogPost"
-  fields: {
-    title: EntryFieldTypes.Text
-    slug: EntryFieldTypes.Text
-    author: Author
-    content: EntryFieldTypes.RichText
-    featuredImage: EntryFieldTypes.AssetLink
-  }
-}
-
-export interface Project {
-  id: string
-  title: string
-  link: string
-  image: {
-    url: string
-    alt: string
-  }
-  tags: Array<string>
-}
+import type { Author, BlogPost, Project, WorkExperience } from "@/types"
+import contentful from "contentful"
 
 export const contentfulClient = contentful.createClient({
   space: import.meta.env.CONTENTFUL_SPACE_ID,
@@ -61,8 +32,8 @@ export const getPosts = async () => {
         content: item.fields.content,
         author: item.fields?.author?.["fields"]?.["name"],
         image: {
-          url: item.fields.featuredImage?.fields?.file?.url,
-          alt: item.fields.featuredImage?.fields?.file?.fileName
+          url: (item.fields.featuredImage as any)?.fields?.file?.url,
+          alt: (item.fields.featuredImage as any)?.fields?.file?.fileName
         }
       }
     }
@@ -94,12 +65,37 @@ export const getProjects = async () => {
     return {
       ...element.fields,
       image: {
-        url: element.fields.image?.fields?.file?.url,
-        alt: element.fields.image?.fields?.file?.fileName
+        url: (element.fields.image as any)?.fields?.file?.url,
+        alt: (element.fields.image as any)?.fields?.file?.fileName
       },
       tags: element.metadata.tags.map((e) => e.sys.id)
     } as Project
   })
 
   return res
+}
+
+export const getWorkExperiences = async () => {
+  const entries = await contentfulClient.getEntries({
+    content_type: "workExperience",
+    order: ["-fields.startDate"]
+  })
+
+  const experiences = entries.items.map((item: any) => {
+    return {
+      companyName: item.fields.companyName,
+      role: item.fields.role,
+      startDate: item.fields.startDate,
+      endDate: item.fields.endDate,
+      description: item.fields.description,
+      companyLogo: {
+        url: `https:${item.fields.companyLogo?.fields?.file?.url}`,
+        alt: item.fields.companyLogo?.fields?.title
+      },
+      companyWebsiteUrl: item.fields.companyWebsiteUrl,
+      techs: item.fields.techs
+    } as WorkExperience
+  })
+
+  return experiences
 }
